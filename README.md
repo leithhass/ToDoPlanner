@@ -120,4 +120,3 @@ flutter run
 <!-- === Contributing / License === -->
 <h3 id="contributing">Contributing</h3>
 <p>Issues and PRs are welcome. Please run <code>flutter analyze</code> and tests before submitting.</p>
-<p><b>License:</b> MIT (or your choice).</p>
