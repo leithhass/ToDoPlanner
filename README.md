@@ -27,11 +27,14 @@
 
 <!-- === Screenshots / Demo === -->
 <h3 id="screenshots">Screenshots</h3>
-<p>(Add your images to <code>/screenshots</code> and update the src paths.)</p>
 <table><tr>
-<td><img src="screenshots/home_light.png" width="260"></td>
-<td><img src="screenshots/home_dark.png" width="260"></td>
-<td><img src="screenshots/insights.png" width="260"></td>
+<td><img src="screenshots/HomePage.png"  width="260" alt="Home page"></td>
+<td><img src="screenshots/AddTask.png"   width="260" alt="Add task sheet"></td>
+<td><img src="screenshots/TaskDone.png"  width="260" alt="Task completed"></td>
+</tr><tr>
+<td><img src="screenshots/Insights.png"  width="260" alt="Insights charts"></td>
+<td><img src="screenshots/Corbeille.png" width="260" alt="Trash view"></td>
+<td><img src="screenshots/DarkMode.png"  width="260" alt="Dark mode"></td>
 </tr></table>
 
 <!-- === Architecture === -->
