@@ -8,7 +8,6 @@ ThemeData buildTheme(Brightness brightness) {
     useMaterial3: true,
     colorScheme: cs,
 
-    // Fond légèrement teinté pour casser le gris
     scaffoldBackgroundColor: Tkn.tintedSurface(cs, .045),
 
     appBarTheme: AppBarTheme(
@@ -25,7 +24,6 @@ ThemeData buildTheme(Brightness brightness) {
       iconTheme: IconThemeData(color: cs.onSurfaceVariant),
     ),
 
-    // Cartes "panel" douces et un peu teintées
     cardTheme: CardThemeData(
       elevation: 0,
       margin: EdgeInsets.zero,
@@ -36,7 +34,6 @@ ThemeData buildTheme(Brightness brightness) {
       ),
     ),
 
-    // Champs (recherche, formulaires)
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: cs.surfaceContainerHighest,
@@ -52,7 +49,6 @@ ThemeData buildTheme(Brightness brightness) {
       ),
     ),
 
-    // Chips plus visibles (fallback global)
     chipTheme: ChipThemeData(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
       side: BorderSide(color: cs.outlineVariant),
@@ -60,7 +56,6 @@ ThemeData buildTheme(Brightness brightness) {
       backgroundColor: cs.surfaceContainerHighest,
     ),
 
-    // FAB bien visible (CTA)
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: cs.primary,
       foregroundColor: cs.onPrimary,
