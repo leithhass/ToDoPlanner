@@ -1,4 +1,3 @@
-// lib/infrastructure/export_service.dart
 import 'dart:convert';
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
@@ -9,7 +8,6 @@ import '../features/todos/data/todo_box.dart';
 import '../features/todos/domain/todo.dart';
 
 class ExportService {
-  // ---------- EXPORT ----------
   static Future<File> exportToJson() async {
     final list = TodoBox.all(includeDeleted: true).map((e) => e.toMap()).toList();
     final dir = await getApplicationDocumentsDirectory();
@@ -21,9 +19,7 @@ class ExportService {
     return file;
   }
 
-  // ---------- IMPORT (robuste, sans typed-catch) ----------
-  /// Essaie le FilePicker; en cas d’erreur OU d’annulation,
-  /// propose un collage manuel de JSON.
+
   static Future<int> importFromJson(BuildContext context) async {
     try {
       final result = await FilePicker.platform.pickFiles(
@@ -38,19 +34,16 @@ class ExportService {
         return _importParseAndSave(content);
       }
 
-      // Annulation ou pas de fichier → proposer le collage
       final pasted = await _promptPasteJson(context);
       if (pasted == null) return 0;
       return _importParseAndSave(pasted);
     } catch (e) {
-      // N’importe quelle erreur plugin/plateforme → fallback collage
       final pasted = await _promptPasteJson(context, error: e.toString());
       if (pasted == null) return 0;
       return _importParseAndSave(pasted);
     }
   }
 
-  // ---------- Helpers ----------
   static int _safeInt(dynamic x) {
     if (x is int) return x;
     if (x is num) return x.toInt();
@@ -71,7 +64,6 @@ class ExportService {
         await TodoBox.put(t);
         imported++;
       } catch (_) {
-        // ignore invalid rows
       }
     }
     return imported;
@@ -92,7 +84,6 @@ class ExportService {
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
                     'Sélecteur de fichiers indisponible.\n$Error',
-                    // échappe proprement si besoin
                     style: TextStyle(color: Theme.of(ctx).colorScheme.error),
                   ),
                 ),

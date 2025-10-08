@@ -156,11 +156,9 @@ class TodosHome extends ConsumerWidget {
             ),
 
       body: Padding(
-        // Moins d’espace sous l’AppBar pour rapprocher la recherche
         padding: const EdgeInsets.fromLTRB(Tkn.s6, Tkn.s3, Tkn.s6, Tkn.s6),
         child: Column(
           children: [
-            // Recherche
             TextField(
               onChanged: (v) => ref.read(queryProvider.notifier).state = v,
               decoration: const InputDecoration(
@@ -170,11 +168,9 @@ class TodosHome extends ConsumerWidget {
             ),
             const SizedBox(height: Tkn.s3),
 
-            // Filtres tags
             const TagFilterBar(),
             const SizedBox(height: Tkn.s4),
 
-            // Liste groupée
             if (filtered.isEmpty)
               const Expanded(
                 child: EmptyState(
@@ -201,7 +197,6 @@ class TodosHome extends ConsumerWidget {
                                 ?.copyWith(fontWeight: FontWeight.w800),
                           ),
                         ),
-                        // Les cartes ont déjà un margin bas (via AppCard / AccentCard)
                         ...g.items.map((t) => TodoTile(todo: t)),
                         const SizedBox(height: 8),
                       ],

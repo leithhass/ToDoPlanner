@@ -24,7 +24,6 @@ class TodoTile extends ConsumerWidget {
     final selected = ref.watch(selectionProvider).contains(todo.id);
     final cs = Theme.of(context).colorScheme;
 
-    // Couleurs priorité (badges + accent carte)
     late final Color prioBg, prioFg, accent;
     switch (todo.priority) {
       case 2:
@@ -46,7 +45,7 @@ class TodoTile extends ConsumerWidget {
         : cs.onSurface;
 
     return _AccentCard(
-      accent: accent, // <- plus besoin d'AppCard.accent, on gère ici
+      accent: accent, 
       padding: const EdgeInsets.all(14),
       margin: const EdgeInsets.only(bottom: 12),
       onTap: () async {
@@ -56,7 +55,7 @@ class TodoTile extends ConsumerWidget {
           s.contains(todo.id) ? s.remove(todo.id) : s.add(todo.id);
           ref.read(selectionProvider.notifier).state = s;
         } else {
-          await ref.read(todosProvider.notifier).toggle(todo.id); // cocher/décocher
+          await ref.read(todosProvider.notifier).toggle(todo.id); 
         }
       },
       child: ListTile(
@@ -69,7 +68,6 @@ class TodoTile extends ConsumerWidget {
         selectedTileColor: cs.primary.withOpacity(.06),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
 
-        // Leading cliquable pour marquer terminé
         leading: IconButton(
           tooltip: todo.done ? 'Marquer non terminé' : 'Marquer terminé',
           onPressed: () async => ref.read(todosProvider.notifier).toggle(todo.id),
@@ -94,21 +92,18 @@ class TodoTile extends ConsumerWidget {
           spacing: 8,
           runSpacing: 4,
           children: [
-            // Badge priorité (rempli)
             Chip(
               label: Text(['Low', 'Med', 'High'][todo.priority]),
               backgroundColor: prioBg,
               labelStyle: TextStyle(color: prioFg, fontWeight: FontWeight.w600),
               visualDensity: VisualDensity.compact,
             ),
-            // Échéance
             Chip(
               label: Text(dueText),
               backgroundColor: dueBg,
               labelStyle: TextStyle(color: dueFg),
               visualDensity: VisualDensity.compact,
             ),
-            // Tags
             ...todo.tags.take(3).map(
               (t) => Chip(
                 label: Text('#$t'),
@@ -132,7 +127,6 @@ class TodoTile extends ConsumerWidget {
           ],
         ),
 
-        // Menu action — coins arrondis
         trailing: PopupMenuButton<String>(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           onSelected: (v) async {
@@ -157,8 +151,6 @@ class TodoTile extends ConsumerWidget {
   }
 }
 
-/// Carte avec contour/ombre teintés par la couleur d'accent.
-/// Implémentée ici pour éviter toute dépendance à un paramètre `accent` externe.
 class _AccentCard extends StatelessWidget {
   const _AccentCard({
     required this.child,
@@ -198,7 +190,6 @@ class _AccentCard extends StatelessWidget {
       child: child,
     );
 
-    // Ripple
     return Material(
       type: MaterialType.transparency,
       child: onTap != null

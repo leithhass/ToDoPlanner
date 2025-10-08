@@ -18,7 +18,6 @@ class TodosNotifier extends Notifier<List<Todo>> {
 
   Future<void> add(Todo t) async {
     await TodoBox.put(t);
-    // planifie si dueDate existe
     await _notifs.scheduleFor(t);
     await refresh();
   }
@@ -28,7 +27,6 @@ class TodosNotifier extends Notifier<List<Todo>> {
     await TodoBox.toggle(id);
     await refresh();
     final after = state.firstWhere((e) => e.id == id, orElse: () => before);
-    // si maintenant c'est "done", annule notification
     if (after.done) await _notifs.cancelFor(after);
   }
 
