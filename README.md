@@ -33,7 +33,6 @@
 <td><img src="screenshots/home_dark.png" width="260"></td>
 <td><img src="screenshots/insights.png" width="260"></td>
 </tr></table>
-<p><i>Optional:</i> <a href="https://leithhass.github.io/ToDoPlanner">Live demo (Web)</a> if you deploy to GitHub Pages.</p>
 
 <!-- === Architecture === -->
 <h3 id="architecture">Architecture</h3>
