@@ -32,3 +32,4 @@ final filteredTodosProvider = Provider<List<Todo>>((ref) {
   if (q.isNotEmpty) list = list.where((t) => t.title.toLowerCase().contains(q));
   return list.toList();
 });
+//fonctionnels
